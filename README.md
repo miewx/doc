@@ -10,6 +10,16 @@ bash <(curl -sL https://t.cn/E4MVVWI)
 
 留意bash的输出，有启动说明。
 
+项目开发人员申请访问私有仓库权限后，可以删除 fckoa/fckoa/config ，克隆私有的配置文件仓库 
+
+```text
+cd  ~/urwork/fckoa/fckoa
+rm -rf config
+git clone https://gitee.com/fckoa/fckoa.shop.config config
+```
+
+否则请参考config的示例配置，修改配置文件，然后push到自己的fork中去。
+
 ### 示例项目
 
 进入 url 目录
