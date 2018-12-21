@@ -1,28 +1,16 @@
 # 导读
 
-## 配置开发环境
+首先注册[ gitee.com](https://gitee.com/) ，[配置访问公钥](https://gitee.com/profile/sshkeys)
 
-先注册GITEE的账户 
-
-{% embed url="https://gitee.com/" %}
-
-然后[配置SSH公钥](https://gitee.com/profile/sshkeys) ，然后运行如下命令（[点此浏览脚本源码](https://t.cn/E4MVVWI)）
+然后运行
 
 ```text
 bash <(curl -sL https://t.cn/E4MVVWI)
 ```
 
-该脚本会克隆前端框架h5，后端框架fckoa，登录模块auth已经他们对应
+留意bash的输出，有启动说明。
 
-如果需要修改后端框架配置文件，可以fork以下项目。**记得修改为私密项目**
-
-{% embed url="https://gitee.com/fckoa/config" %}
-
-配置文件中 fc.coffee 是 [阿里云函数计算](https://help.aliyun.com/product/50980.html%20)的配置文件，工程可以部署到阿里函数计算。
-
-如果只是开发，可以忽略fc.coffee （不用修改）。
-
-### 克隆演示工程
+### 示例项目
 
 进入 url 目录
 
@@ -46,26 +34,25 @@ demo/test.coffee 中的url，默认会加上 /demo/test/ 的前缀
 
 等路径并对照源代码看看，注意结尾的 / 不能被省略
 
-### 数据库访问
+想创建一个新的工程，可以参考demo，先新建一个Git项目，目录clone到url下。
 
 为了方便数据库的使用，在 fckoa/fckoa/db/pg.coffee 中自定义了一些助手函数，请查阅源码
 
-运行 ./dev.sh 进入开发调试环境，可以在本机访问
+## 常见问题
 
-### 常见问题
+#### 前端
 
-1. 如果在VUE文件中写了CSS文件，但是页面没反应，重启前端开发服务器即可
-2. 后端route不能写空的规则 ，可以写`"/": (ctx)-> ……`访问的时候结尾也必须加上 /
+如果在VUE文件中写了CSS文件，但是页面没反应，重启开发服务器即可
 
-### 线上部署
+#### 后端
 
-运行 ./dist.sh 部署到阿里云函数
+后端的url不能为空字符串，必须写"/"（如下），访问的结尾也必须带上/
 
-首次部署后，请创建HTTP触发器。
+```text
+"/":(ctx)->……
+```
 
-![](https://p.gu321.com/20181206013143.png)
-
-### 备份
+## 备份
 
 ### 数据库备份
 
